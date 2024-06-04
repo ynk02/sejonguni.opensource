@@ -1,7 +1,7 @@
 #pragma once
 
 
-#define LUNGIME 8
+#define BOARDLEN 8
 #define PawnB 1
 #define PawnW -1
 #define RookB 2
@@ -20,6 +20,7 @@ struct poz
 	int x, y;
 }oldPoz;
 
+int  size = 100, move = 0, x, y;
 int board[8][8] =
 { 2, 3, 4, 5, 6, 4, 3, 2,
   1, 1, 1, 1, 1, 1, 1, 1,
@@ -29,5 +30,3 @@ int board[8][8] =
   0, 0, 0, 0, 0, 0, 0, 0,
  -1,-1,-1,-1,-1,-1,-1,-1,
  -2,-3,-4,-5,-6,-4,-3,-2, };
-
-
