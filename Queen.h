@@ -5,7 +5,7 @@
 //불가능 return 0
 
 
-int WhiteQueen(int x, int y, int dx, int dy)
+int QueenWhite(int x, int y, int dx, int dy)
 {
 	for (int i = x - 1; i >= 0; i--)
 	{
@@ -106,7 +106,7 @@ int WhiteQueen(int x, int y, int dx, int dy)
 	return 0;
 }
 
-int BlackQueen(int x, int y, int dx, int dy)
+int QueenBlack(int x, int y, int dx, int dy)
 {
 	for (int i = x - 1; i >= 0; i--)
 	{
