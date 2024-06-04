@@ -5,7 +5,7 @@
 //불가능 return 0
 
 
-int BlackRook(int x, int y, int dx, int dy)
+int RookBlack(int x, int y, int dx, int dy)
 {
 	for (int i = x - 1; i >= 0; i--)
 	{
@@ -55,7 +55,7 @@ int BlackRook(int x, int y, int dx, int dy)
 }
 
 
-int WhiteRook(int x, int y, int dx, int dy)
+int RookWhite(int x, int y, int dx, int dy)
 {
 	for (int i = x - 1; i >= 0; i--) //왼족 체크
 	{
