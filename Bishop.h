@@ -1,12 +1,6 @@
 #pragma once
 
-<<<<<<< HEAD
-#include "변수 선언.h"
-=======
 #include "basic.h"
-
-
->>>>>>> featureBishopCatch
 
 int BishopWhite(int beforeX, int beforeY, int afterX, int afterY)
 {
