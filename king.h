@@ -236,6 +236,52 @@ int KingBlackMove(int oldx, int oldy, int newx, int newy)
 			return 1; 
 		}
 	}
+
+	if (RookB_Right==0 && King_B==0 && board[0][5]==0 && board[0][6]==0 && newx==0 && newy==6)
+	{
+		int ok = KingBlackCheck(4, 0);
+		if (ok == 1)
+		{
+			ok = KingBlackCheck(5, 0);
+			if (ok == 1)
+			{
+				ok = KingBlackCheck(6, 0);
+				if (ok == 1)
+				{
+					King_B = 1;
+					RookB_Right = 1;
+					board[0][7] = 0;
+					board[0][5] = RookB;
+					return 1;
+				}
+			}
+		}
+	}
+	if (RookB_Left == 0 && King_B == 0 && board[0][3] == 0 && board[0][2] == 0 && board[0][1] == 0 && newx == 0 && newy == 2)
+	{
+		int ok = KingBlackCheck(4, 0);
+		if (ok == 1)
+		{
+			ok = KingBlackCheck(3, 0);
+			if (ok == 1)
+			{
+				ok = KingBlackCheck(2, 0);
+				if (ok == 1)
+				{
+					ok = KingBlackCheck(1, 0);
+					if (ok == 1)
+					{
+						King_B = 1;
+						RookB_Left = 1;
+						board[0][0] = 0;
+						board[0][3] = RookB;
+						return 1;
+					}
+				}
+			}
+		}
+	}
+	return 0;
 }
 
 int KingWhiteMove(int oldx, int oldy, int newx, int newy)
