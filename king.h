@@ -236,6 +236,52 @@ int KingBlackMove(int oldx, int oldy, int newx, int newy)
 			return 1; 
 		}
 	}
+
+	if (RookB_Right==0 && King_B==0 && board[0][5]==0 && board[0][6]==0 && newy==0 && newx==6)
+	{
+		int ok = KingBlackCheck(4, 0);
+		if (ok == 1)
+		{
+			ok = KingBlackCheck(5, 0);
+			if (ok == 1)
+			{
+				ok = KingBlackCheck(6, 0);
+				if (ok == 1)
+				{
+					King_B = 1;
+					RookB_Right = 1;
+					board[0][7] = 0;
+					board[0][5] = RookB;
+					return 1;
+				}
+			}
+		}
+	}
+	if (RookB_Left == 0 && King_B == 0 && board[0][3] == 0 && board[0][2] == 0 && board[0][1] == 0 && newy == 0 && newx == 2)
+	{
+		int ok = KingBlackCheck(4, 0);
+		if (ok == 1)
+		{
+			ok = KingBlackCheck(3, 0);
+			if (ok == 1)
+			{
+				ok = KingBlackCheck(2, 0);
+				if (ok == 1)
+				{
+					ok = KingBlackCheck(1, 0);
+					if (ok == 1)
+					{
+						King_B = 1;
+						RookB_Left = 1;
+						board[0][0] = 0;
+						board[0][3] = RookB;
+						return 1;
+					}
+				}
+			}
+		}
+	}
+	return 0;
 }
 
 int KingWhiteMove(int oldx, int oldy, int newx, int newy)
@@ -304,6 +350,55 @@ int KingWhiteMove(int oldx, int oldy, int newx, int newy)
 			return 1; 
 		}
 	}
+
+	if (King_W == 0 && RookW_Right == 0 && board[7][5] == 0 && board[7][6] == 0 && newy==7 && newx==6)
+	{
+		int ok = 1;
+		ok = KingWhiteCheck(4, 7);
+		if (ok == 1)
+		{
+			ok = KingWhiteCheck(5, 7);
+			if (ok == 1)
+			{
+				ok = KingWhiteCheck(6, 7);
+				if (ok == 1)
+				{
+					board[7][7] = 0;
+					board[7][5] = RookW;
+					King_W = 1;
+					RookW_Right = 1;
+					return 1;
+				}
+			}
+		}
+	}
+	
+	if (King_W == 0 && RookW_Right == 0 && board[7][3] == 0 && board[7][2] == 0 && board[7][1] == 0 && newy == 7 && newx == 2)
+	{
+		int ok = 1;
+		ok = KingWhiteCheck(4, 7);
+		if (ok == 1)
+		{
+			ok = KingWhiteCheck(3, 7);
+			if (ok == 1)
+			{
+				ok = KingWhiteCheck(2, 7);
+				if (ok == 1)
+				{
+					ok = KingWhiteCheck(1, 7);
+					if (ok == 1)
+					{
+						board[7][0] = 0;
+						board[7][3] = RookW;
+						King_W = 1;
+						RookW_Left = 1;
+						return 1;
+					}
+				}
+			}
+		}
+	}
+	return 0;
 }
 
 
