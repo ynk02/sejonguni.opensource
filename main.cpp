@@ -78,7 +78,81 @@ int main()
 			}
 		}
 
-	
+		window.clear();
+		window.draw(tabla);
+		
+		for (int i = 0; i < BOARDLEN; i++)
+		{
+			for (int j = 0; j < BOARDLEN; j++)
+			{
+
+				if (board[i][j] != 0)
+				{
+					if (board[i][j] == PawnB)
+					{
+						Pawnb.setPosition(j * size, i * size);
+						window.draw(Pawnb);
+					}
+					if (board[i][j] == PawnW)
+					{
+						Pawnw.setPosition(j * size, i * size);
+						window.draw(Pawnw);
+					}
+					if (board[i][j] == RookB)
+					{
+						Rookb.setPosition(j * size, i * size);
+						window.draw(Rookb);
+
+					}
+					if (board[i][j] == RookW)
+					{
+						Rookw.setPosition(j * size, i * size);
+						window.draw(Rookw);
+
+					}
+					if (board[i][j] == KnightW)
+					{
+						Knightw.setPosition(j * size, i * size);
+						window.draw(Knightw);
+					}
+					if (board[i][j] == KnightB)
+					{
+						Knightb.setPosition(j * size, i * size);
+						window.draw(Knightb);
+					}
+					if (board[i][j] == BishopB)
+					{
+						Bishopb.setPosition(j * size, i * size);
+						window.draw(Bishopb);
+					}
+					if (board[i][j] == BishopW)
+					{
+						Bishopw.setPosition(j * size, i * size);
+						window.draw(Bishopw);
+					}
+					if (board[i][j] == QueenW)
+					{
+						Queenw.setPosition(j * size, i * size);
+						window.draw(Queenw);
+					}
+					if (board[i][j] == QueenB)
+					{
+						Queenb.setPosition(j * size, i * size);
+						window.draw(Queenb);
+					}
+					if (board[i][j] == KingB)
+					{
+						Kingb.setPosition(j * size, i * size);
+						window.draw(Kingb);
+					}
+					if (board[i][j] == KingW)
+					{
+						Kingw.setPosition(j * size, i * size);
+						window.draw(Kingw);
+					}
+				}
+			}
+		}
 
 		window.display();
 	}
