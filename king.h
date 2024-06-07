@@ -81,7 +81,6 @@ int KingBlackCatch(int beforeX, int beforeY, int afterX, int afterY)
 	return 0;
 }
 
-//화이트킹 체크 확인
 int KingWhiteCheck(int dx, int dy)
 {
 	int ok = 0;
@@ -126,8 +125,6 @@ int KingWhiteCheck(int dx, int dy)
 	return 1;
 }
 
-
-//블랙킹 체크 확인
 int KingBlackCheck(int dx, int dy)
 {
 	int ok = 0;
@@ -170,3 +167,145 @@ int KingBlackCheck(int dx, int dy)
 	}
 	return 1;
 }
+
+
+
+int KingBlackMove(int oldx, int oldy, int newx, int newy)
+{
+	if (oldx - 1 >= 0 && oldy - 1 >= 0 && newy == oldy - 1 && newx == oldx - 1 && board[newy][newx] <= 0)
+	{
+		int ok = KingBlackCheck(oldx - 1, oldy - 1);
+		if (ok == 1)
+		{
+			return 1;  
+		}
+	}
+	if (oldy - 1 >= 0 && newx == oldx && newy == oldy-1 && board[newy][newx] <= 0)
+	{
+		int ok = KingBlackCheck(oldx, oldy-1);
+		if (ok == 1)
+		{
+			return 1; 
+		}
+	}
+	if (oldy - 1 >= 0 && oldx + 1 < BOARDLEN && newx == oldx + 1 && newy == oldy - 1 && board[newy][newx] <= 0)
+	{
+		int ok = KingBlackCheck(oldx+ 1, oldy- 1);
+		if (ok == 1)
+		{
+			return 1; 
+		}
+	}
+	if (oldx + 1 < BOARDLEN && newy == oldy && newx == oldx+1 && board[newy][newx] <= 0)
+	{
+		int ok = KingBlackCheck(oldx+1, oldy);
+		if (ok == 1)
+		{
+			return 1; 
+		}
+	}
+	if (oldx + 1 < BOARDLEN && oldy + 1 < BOARDLEN && newy == oldy + 1 && newx == oldx + 1 && board[newy][newx] <= 0)
+	{
+		int ok = KingBlackCheck(oldx + 1, oldy + 1);
+		if (ok == 1)
+		{
+			return 1; 
+		}
+	}
+	if (oldy + 1 < BOARDLEN && newy == oldy+1 && newx == oldx && board[newy][newx] <= 0)
+	{
+		int ok = KingBlackCheck(oldx, oldy+1);
+		if (ok == 1)
+		{
+			return 1;
+		}
+	}
+	if (oldx - 1 >=0 && oldy + 1 <BOARDLEN && newx == oldx - 1 && newy == oldy + 1 && board[newy][newx] <= 0)
+	{
+		int ok = KingBlackCheck(oldx-1, oldy+ 1);
+		if (ok == 1)
+		{
+			return 1; 
+		}
+	}
+	if (oldx - 1 >= 0 && newy == oldy && newx == oldx-1 && board[newy][newx] <= 0)
+	{
+		int ok = KingBlackCheck(oldx-1, oldy);
+		if (ok == 1)
+		{
+			return 1; 
+		}
+	}
+}
+
+int KingWhiteMove(int oldx, int oldy, int newx, int newy)
+{
+	if (oldx - 1 >= 0 && oldy - 1 >= 0 && newy == oldy - 1 && newx == oldx - 1 && board[newy][newx] >= 0)
+	{
+		int ok = KingWhiteCheck(oldx - 1, oldy - 1);
+		if (ok == 1)
+		{
+			return 1;  
+		}
+	}
+	if (oldy - 1 >= 0 && newx == oldx && newy == oldy - 1 && board[newy][newx] >= 0)
+	{
+		int ok = KingWhiteCheck(oldx, oldy - 1);
+		if (ok == 1)
+		{
+			return 1; 
+		}
+	}
+	if (oldy - 1 >= 0 && oldx + 1 < BOARDLEN && newx == oldx + 1 && newy == oldy - 1 && board[newy][newx] >= 0)
+	{
+		int ok = KingWhiteCheck(oldx + 1, oldy - 1);
+		if (ok == 1)
+		{
+			return 1; 
+		}
+	}
+	if (oldx + 1 < BOARDLEN && newy == oldy && newx == oldx + 1 && board[newy][newx] >= 0)
+	{
+		int ok = KingWhiteCheck(oldx + 1, oldy);
+		if (ok == 1)
+		{
+			return 1; 
+		}
+	}
+	if (oldx + 1 < BOARDLEN && oldy + 1 < BOARDLEN && newy == oldy + 1 && newx == oldx + 1 && board[newy][newx] >= 0)
+	{
+		int ok = KingWhiteCheck(oldx + 1, oldy + 1);
+		if (ok == 1)
+		{
+			return 1; 
+		}
+	}
+	if (oldy + 1 < BOARDLEN && newy == oldy + 1 && newx == oldx && board[newy][newx] >= 0)
+	{
+		int ok = KingWhiteCheck(oldx, oldy + 1);
+		if (ok == 1)
+		{
+			return 1; 
+		}
+	}
+	if (oldx - 1 >= 0 && oldy + 1 < BOARDLEN && newx == oldx - 1 && newy == oldy + 1 && board[newy][newx] >= 0)
+	{
+		int ok = KingWhiteCheck(oldx - 1, oldy + 1);
+		if (ok == 1)
+		{
+			return 1; 
+		}
+	}
+	if (oldx - 1 >= 0 && newy == oldy && newx == oldx - 1 && board[newy][newx] >= 0)
+	{
+		int ok = KingWhiteCheck(oldx - 1, oldy);
+		if (ok == 1)
+		{
+			return 1; 
+		}
+	}
+}
+
+
+
+
