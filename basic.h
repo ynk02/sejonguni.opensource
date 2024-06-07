@@ -18,9 +18,8 @@
 struct poz
 {
 	int x, y;
-}oldPoz;
+}oldPoz, KingWhitePoz, KingBlackPoz, transformW, transformB;
 
-int  size = 100, move = 0, x, y;
 int board[8][8] =
 { 2, 3, 4, 5, 6, 4, 3, 2,
   1, 1, 1, 1, 1, 1, 1, 1,
@@ -30,3 +29,16 @@ int board[8][8] =
   0, 0, 0, 0, 0, 0, 0, 0,
  -1,-1,-1,-1,-1,-1,-1,-1,
  -2,-3,-4,-5,-6,-4,-3,-2, };
+
+int  size = 100, move = 0, x, y;
+
+int RookW_Right = 0, RookW_Left = 0, King_W = 0;
+int RookB_Right = 0, RookB_Left = 0, King_B = 0;
+
+int Who_turn = 0;
+
+int KingW_Check = 0, KingB_Check = 0;
+
+int PromotionWhite = 0, PromotionBlack = 0;
+
+
