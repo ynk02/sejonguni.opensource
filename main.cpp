@@ -1,12 +1,8 @@
-#include "basic.h"
-#include "Bishop.h"
-#include "knight.h"
-#include "Pawn.h"
-#include "Queen.h"
-#include "Rook.h"
+#include <SFML/Graphics.hpp>
+#include <iostream>
+
+#include "king.h"
 using namespace sf;
-
-
 int main()
 {
     RenderWindow window(VideoMode(800, 800), "Open Source assignment Chess game"); /* 800*800 크기의 SFML창을 생성, 제목은 " "*/
@@ -75,11 +71,6 @@ int main()
                 printf("순서: %d\n", Who_turn);
                 if (e.key.code == Mouse::Left) /* 마우스 왼쪽 버튼이 눌렸을 때 */
                 {
-                    //std::cout << "x=" << x << " y=" << y << "\n";
-                    //std::cout << "pos_x=" << pos.x << " pos_y=" << pos.y << "\n";
-                    //std::cout << "board[y][x]=" << board[y][x] << "\n";
-                    //std::cout << "\n";
-
 
 
                     // 선택한 위치의 체스말을 이동중인 상태로 설정
@@ -267,17 +258,96 @@ int main()
                         int nr = board[y][x]; /* 이동하려는 위치에 원래 있던 체스말의 번호를 저장 */
                         board[y][x] = Movingpiece; /* 현재 이동 주인 체스말을 새위치에 배치 */
 
+
                         // 체크 및 체크메이트처리
-                        if (Who_turn == 0)
+                        if (Who_turn == 0) // 체크메이트 추가
                         {
-                            Who_turn = 1;
-
+                            if (KingW_Check == 1)
+                            {
+                                pozKingW();
+                                int s = KingWhiteCheck(KingWhitePoz.x, KingWhitePoz.y);
+                                if (s == 0)
+                                {
+                                    board[oldPoz.y][oldPoz.x] = Movingpiece;
+                                    board[y][x] = nr;
+                                }
+                                else
+                                {
+                                    KingW_Check = 0;
+                                    pozKingB();
+                                    int sah = KingBlackCheck(KingBlackPoz.x, KingBlackPoz.y);
+                                    if (sah == 0)
+                                    {
+                                        KingB_Check = 1;
+                                    }
+                                    Who_turn = 1;
+                                }
+                            }
+                            else
+                            {
+                                pozKingW();
+                                int sa = KingWhiteCheck(KingWhitePoz.x, KingWhitePoz.y);
+                                if (sa == 0)
+                                {
+                                    board[oldPoz.y][oldPoz.x] = Movingpiece;
+                                    board[y][x] = nr;
+                                }
+                                else
+                                {
+                                    pozKingB();
+                                    int sah = KingBlackCheck(KingBlackPoz.x, KingBlackPoz.y);
+                                    if (sah == 0)
+                                    {
+                                        KingB_Check = 1;
+                                    }
+                                    Who_turn = 1;
+                                }
+                            }
                         }
-                        if (Who_turn == 1)
+                        else
                         {
-
-                            Who_turn = 0;
-
+                            //std::cout << "여기까지옴";
+                            if (KingB_Check == 1)
+                            {
+                                pozKingB();
+                                int s = KingBlackCheck(KingBlackPoz.x, KingBlackPoz.y);
+                                if (s == 0)
+                                {
+                                    board[oldPoz.y][oldPoz.x] = Movingpiece;
+                                    board[y][x] = nr;
+                                }
+                                else
+                                {
+                                    KingB_Check = 0;
+                                    pozKingW();
+                                    int sah = KingWhiteCheck(KingWhitePoz.x, KingWhitePoz.y);
+                                    if (sah == 0)
+                                    {
+                                        KingW_Check = 1;
+                                    }
+                                    Who_turn = 0;
+                                }
+                            }
+                            else
+                            {
+                                pozKingB();
+                                int sa = KingBlackCheck(KingBlackPoz.x, KingBlackPoz.y);
+                                if (sa == 0)
+                                {
+                                    board[oldPoz.y][oldPoz.x] = Movingpiece;
+                                    board[y][x] = nr;
+                                }
+                                else
+                                {
+                                    pozKingW();
+                                    int sah = KingWhiteCheck(KingWhitePoz.x, KingWhitePoz.y);
+                                    if (sah == 0)
+                                    {
+                                        KingW_Check = 1;
+                                    }
+                                    Who_turn = 0;
+                                }
+                            }
                         }
                     }
 
@@ -285,7 +355,6 @@ int main()
                     else if (ok == 0)
 
                     {
-                        //::cout << "이동불가상태임" ;
                         board[oldPoz.y][oldPoz.x] = Movingpiece; /* 말을 원래 위치로 되돌림 */
                     }
                     move = 0; /* 이동 상태 초기화 */
@@ -303,9 +372,9 @@ int main()
             who_turn.setPosition(pos.x - dx, pos.y - dy);
             window.draw(who_turn);
         }
-        for (int i = 0; i < BOARDLEN; i++) /* 체스판의 모든 위치를 순회하며 체스말을 그림 */
+        for (int i = 0; i < LUNGIME; i++) /* 체스판의 모든 위치를 순회하며 체스말을 그림 */
         {
-            for (int j = 0; j < BOARDLEN; j++)
+            for (int j = 0; j < LUNGIME; j++)
             {
 
                 if (board[i][j] != 0)
@@ -379,3 +448,4 @@ int main()
     }
     return 0;
 }
+
