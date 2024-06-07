@@ -402,5 +402,32 @@ int KingWhiteMove(int oldx, int oldy, int newx, int newy)
 }
 
 
+void pozKingW()
+{
+	for (int i = 0; i < BOARDLEN; i++) {
+		for (int j = 0; j < BOARDLEN; j++) {
+			if (board[i][j] == KingW)
+			{
+				KingWhitePoz.x = j;
+				KingWhitePoz.y = i;
+				break;
+			}
+		}
+	}
+}
+void pozKingB()
+{
+	for (int i = 0; i < BOARDLEN; i++) {
+		for (int j = 0; j < BOARDLEN; j++) {
+			if (board[i][j] == KingB)
+			{
+				KingBlackPoz.y = i;
+				KingBlackPoz.x = j;
+				break;
+			}
+		}
+	}
+}
+
 
 
